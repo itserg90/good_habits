@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "good-habits"
+version = "0.1.0"
+description = ""
+authors = ["Sergei Gorlanov <itserg90@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.7"
+djangorestframework = "^3.15.2"
+black = "^24.4.2"
+psycopg2-binary = "^2.9.9"
+python-dotenv = "^1.0.1"
+django-phonenumber-field = {extras = ["phonenumbers"], version = "^8.0.0"}
+pillow = "^10.4.0"
+djangorestframework-simplejwt = "^5.3.1"
+drf-yasg = "^1.21.7"
+django-cors-headers = "^4.4.0"
+requests = "^2.32.3"
+celery = "^5.4.0"
+django-celery-beat = "^2.6.0"
+redis = "^5.0.7"
+pytz = "^2024.1"
+coverage = "^7.6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
