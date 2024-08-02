@@ -19,5 +19,5 @@ class HabitSerializer(ModelSerializer):
             TimeToCompleteValidator(field="time_to_complete"),
             PleasantHabitValidator(field="pleasant_habit"),
             RelatedHabitRewardValidator(fields),
-            PeriodicityValidator(field="periodicity"),
+            # PeriodicityValidator(field="periodicity"),
         ]

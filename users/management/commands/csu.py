@@ -5,9 +5,10 @@ from users.models import User
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        user = User.objects.create(email="ad2@gmail.com")
+        user = User.objects.create(email="admin1@gmail.com")
         user.set_password("123qwe")
         user.is_active = True
-        user.is_staff = False
-        user.is_superuser = False
+        user.is_staff = True
+        user.is_superuser = True
+        user.tg_chat_id = 1521599162
         user.save()

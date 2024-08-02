@@ -6,7 +6,7 @@ from users.views import UserCreateAPIView, UserUpdateAPIView
 
 app_name = UsersConfig.name
 urlpatterns = [
-    path("registeк/", UserCreateAPIView.as_view(), name="register"),
+    path("register/", UserCreateAPIView.as_view(), name="register"),
     path("<int:pk>/update/", UserUpdateAPIView.as_view(), name="user_update"),
     # Авторизация и получение токенов
     path(

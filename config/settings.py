@@ -140,6 +140,6 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 CELERY_BEAT_SCHEDULE = {
     "send_telegram_message": {
         "task": "habits.tasks.send_telegram_message",
-        "schedule": timedelta(days=1),
+        "schedule": timedelta(seconds=10),
     },
 }

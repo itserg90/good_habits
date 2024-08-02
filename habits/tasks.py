@@ -1,16 +1,18 @@
-from django.conf import settings
 from celery import shared_task
-
-import requests
+from habits.models import Habit
+from habits.services import send_message, check_periodicity
 
 
 @shared_task
-def send_telegram_message(*args):
+def send_telegram_message():
     """Отправляет пользователю привчку в телеграм"""
-    chat_id = args[0]
-    message = args[1]
-
-    params = {"chat_id": chat_id, "text": message}
-    requests.get(
-        f"{settings.TELEGRAM_URL}{settings.TELEGRAM_TOKEN}/sendMessage", params=params
-    )
+    habits = Habit.objects.all()
+    for habit in habits:
+        if habit.user.tg_chat_id and check_periodicity(
+            habit.updated_at, habit.periodicity
+        ):
+            tg_id = habit.user.tg_chat_id
+            message = (
+                f"Привычка: {habit.action}\nВремя: {habit.time}\nМесто: {habit.place}"
+            )
+            send_message(tg_id, message)

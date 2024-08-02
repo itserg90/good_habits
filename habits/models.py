@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 from config.settings import AUTH_USER_MODEL
@@ -29,7 +30,9 @@ class Habit(models.Model):
         verbose_name="Связанная привычка",
     )
     periodicity = models.PositiveIntegerField(
-        verbose_name="Периодичность в днях", default=1
+        verbose_name="Периодичность в днях",
+        default=1,
+        validators=[MinValueValidator(1), MaxValueValidator(7)],
     )
     reward = models.CharField(
         max_length=255,
