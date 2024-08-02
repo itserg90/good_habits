@@ -6,7 +6,6 @@ from habits.validators import (
     TimeToCompleteValidator,
     PleasantHabitValidator,
     RelatedHabitRewardValidator,
-    PeriodicityValidator,
 )
 
 
@@ -19,5 +18,4 @@ class HabitSerializer(ModelSerializer):
             TimeToCompleteValidator(field="time_to_complete"),
             PleasantHabitValidator(field="pleasant_habit"),
             RelatedHabitRewardValidator(fields),
-            # PeriodicityValidator(field="periodicity"),
         ]

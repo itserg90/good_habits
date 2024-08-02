@@ -54,15 +54,3 @@ class RelatedHabitRewardValidator:
             raise ValidationError(
                 "У приятной привычки не может быть вознаграждения или связанной привычки."
             )
-
-
-class PeriodicityValidator:
-    """Проверяет выбор периодичности выполнения привычки(от 1 до 7 дней)"""
-
-    def __init__(self, field):
-        self.field = field
-
-    def __call__(self, value):
-        periodicity = value.get("periodicity")
-        if periodicity in range(1, 8):
-            raise ValidationError("Нельзя выполнять привычку реже, чем 1 раз в 7 дней.")
